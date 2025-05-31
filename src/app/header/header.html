@@ -1,0 +1,24 @@
+<mat-toolbar class="header">
+  <button matIconButton>
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>ANIL ALLIKEPALLI</span>
+  <span class="example-spacer"></span>
+</mat-toolbar>
+
+<nav mat-tab-nav-bar [tabPanel]="tabPanel" class="sticky top-14 z-10 bg-black">
+  @for (link of navLinks; track link) {
+  <a
+    mat-tab-link
+    [routerLink]="link.location"
+    routerLinkActive
+    #rla="routerLinkActive"
+    [active]="rla.isActive"
+    class=""
+  >
+    <mat-icon>{{link.icon}}</mat-icon>
+    <span>{{link.label | uppercase}}</span>
+  </a>
+  }
+</nav>
+<mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>

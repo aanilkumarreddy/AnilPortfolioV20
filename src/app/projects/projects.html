@@ -1,0 +1,5 @@
+<app-page-title [title]="'Projects'" [icon]="'assignment'"></app-page-title>
+
+@for(cvItem of projectsDetails() ?? []; track cvItem) {
+<app-cv-item [cvItem]="cvItem"></app-cv-item>
+}

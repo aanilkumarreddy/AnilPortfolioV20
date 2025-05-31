@@ -1,1 +1,56 @@
-/* You can add global styles to this file, and also import other style files */
+// Custom Theming for Angular Material
+// For more information: https://material.angular.dev/guide/theming
+@use "@angular/material" as mat;
+@import "tailwindcss" important;
+
+html {
+  @include mat.theme(
+    (
+      color: (
+        theme-type: dark,
+        primary: mat.$cyan-palette,
+        tertiary: mat.$orange-palette,
+      ),
+      typography: Roboto,
+      density: 0,
+    )
+  );
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0 auto;
+  min-width: 250px;
+  max-width: 800px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: var(--mat-sys-background);
+  color: var(--mat-sys-on-background);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+:root {
+  @include mat.toolbar-overrides(
+    (
+      container-background-color: var(--mat-sys-primary-container),
+      container-text-color: var(--mat-sys-on-primary-container),
+      standard-height: 56px,
+    )
+  );
+}
+
+:root {
+  @include mat.tabs-overrides(
+    (
+      background-color: var(--mat-sys-on-background),
+    )
+  );
+}
+
+.mat-mdc-card {
+  margin: 18px 0;
+}

@@ -1,0 +1,36 @@
+<app-page-title [title]="title" [icon]="'account_circle'"></app-page-title>
+
+<mat-card appearance="raised">
+  <mat-card-header>
+    <div mat-card-avatar class="overview-header-image"></div>
+    <mat-card-title>About me</mat-card-title>
+
+    @if(this.overviewData()?.position){
+    <mat-card-subtitle> {{ this.overviewData()?.position }} </mat-card-subtitle>
+    }
+  </mat-card-header>
+  <img mat-card-image src="images/anil.jpg" alt="Photo of Anil" />
+
+  @if(this.overviewData()?.description){
+  <mat-card-content>
+    <p>{{ this.overviewData()?.description ?? '' }}</p>
+  </mat-card-content>
+  }
+</mat-card>
+@if(this.overviewData()?.intrests?.length>0){
+
+<mat-card class="px-6 py-3" appearance="raised">
+  <mat-card-title>Hobbies and Interests</mat-card-title>
+  <mat-card-content>
+    <mat-list>
+      @for(item of this.overviewData()?.intrests; track item) {
+      <mat-list-item>
+        <mat-icon matListItemIcon>{{item.icon}}</mat-icon>
+        <div matListItemTitle>{{item.title}}</div>
+        <div matListItemLine>{{item.subtitle }}</div>
+      </mat-list-item>
+      }
+    </mat-list>
+  </mat-card-content>
+</mat-card>
+}

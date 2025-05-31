@@ -1,0 +1,8 @@
+<app-page-title
+  [title]="'Voluntary Work and Causes'"
+  [icon]="'favorite'"
+></app-page-title>
+
+@for(cvItem of volunteeringDetails() ?? []; track cvItem) {
+<app-cv-item [cvItem]="cvItem"></app-cv-item>
+}

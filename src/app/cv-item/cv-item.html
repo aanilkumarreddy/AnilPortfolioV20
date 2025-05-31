@@ -1,0 +1,68 @@
+@if(cvItem()){
+<mat-card
+  class="cv-card closed"
+  [class.opened]="isExpanded"
+  [class.closed]="!isExpanded"
+>
+  <span class="cv-thumbnail">
+    @if(cvItem()?.thumbnail){
+    <img src="images/{{cvItem().thumbnail}}" width="100px" alt="Thumbnail" />
+    }
+    <mat-divider [vertical]="'true'" class="vertical-divider"></mat-divider>
+  </span>
+  <span class="timespan">
+    @if(cvItem()?.begin){
+    <span class="timespan-begin">
+      {{cvItem().begin}}
+      <mat-icon>arrow_forward</mat-icon>
+    </span>
+    } @if(cvItem()?.end){
+    <span class="timespan-end">{{cvItem().end}}</span>}@else {
+    <span class="timespan-end">now <mat-icon>access_time</mat-icon></span>
+    }
+  </span>
+  <mat-card-header>
+    <mat-card-title>{{cvItem()?.title}}</mat-card-title>
+    <mat-card-subtitle>{{cvItem()?.subtitle}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    @if(cvItem()?.description ){
+    <p>{{cvItem().description}}</p>
+    } @if (cvItem()?.tags && cvItem().tags.length > 0) {
+    <mat-chip-listbox>
+      @for (tag of cvItem().tags; track tag) {
+      <mat-chip>{{ tag }}</mat-chip>
+      }
+    </mat-chip-listbox>
+    }
+  </mat-card-content>
+  @if(cvItem()?.description || cvItem()?.tags?.length > 0 || cvItem()?.link ||
+  cvItem()?.attachment) {
+  <button
+    matIconButton
+    class="toggle-details p-2 pr-2.5"
+    (click)="toggleDetails($event)"
+  >
+    <mat-icon aria-label="toggle details"></mat-icon>
+  </button>
+  }
+  <mat-card-actions>
+    @if(cvItem()?.link ) {
+    <a mat-button color="primary" href="{{cvItem().link}}" target="_blank">
+      <mat-icon>link</mat-icon>
+      VIEW LINK
+    </a>
+    } @if(cvItem()?.attachment){
+    <a
+      mat-button
+      color="primary"
+      href="attachments/{{cvItem().attachment}}"
+      target="_blank"
+    >
+      <mat-icon>attachment</mat-icon>
+      VIEW ATTACHED FILE
+    </a>
+    }
+  </mat-card-actions>
+</mat-card>
+}

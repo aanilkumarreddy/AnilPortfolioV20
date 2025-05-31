@@ -1,0 +1,4 @@
+<app-page-title [title]="title" [icon]="'work'"></app-page-title>
+@for(cvItem of experienceItems(); track cvItem) {
+<app-cv-item [cvItem]="cvItem"></app-cv-item>
+}
