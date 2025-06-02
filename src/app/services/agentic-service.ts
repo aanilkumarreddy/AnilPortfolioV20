@@ -28,39 +28,38 @@ export class AgentService {
       functionDeclarations: [
         {
           name: 'getEducation',
-          description: 'Retrieve education details',
+          description:
+            "Retrieve Anil's education details, including degrees (EducationItems), certifications (CertificationItems), and language proficiency (LanguageItems). Use this to answer questions about his academic background or skills in a friendly, engaging way.",
         },
         {
           name: 'getWorkExperience',
-          description: 'Retrieve work experience details',
+          description:
+            "Retrieve Anil's work experience, job entries with details like titles, companies, and technologies used. Craft responses highlighting his professional journey with a touch of humor.",
         },
         {
           name: 'getProjects',
-          description: 'Retrieve project details',
+          description:
+            "Retrieve Anil's project details, projects with descriptions, technologies, and outcomes. Present them as cool achievements he'd proudly share.",
         },
         {
           name: 'getOverview',
-          description: 'Retrieve overview of the portfolio',
+          description:
+            "Retrieve an overview of Anil's portfolio, including his name, position, description, and interests. Use this for a quick intro with his personal flair.",
         },
         {
           name: 'getContact',
-          description: 'Retrieve contact information',
+          description:
+            "Retrieve Anil's contact info, like email, phone, LinkedIn, GitHub, etc. Share it like Anil's handing out his business card with a smile.",
         },
         {
           name: 'getVolunteering',
-          description: 'Retrieve volunteering experience',
+          description:
+            '"Retrieve Anil\'s volunteering experiences, entries with descriptions and dates. Highlight his community spirit in the response.",',
         },
         {
           name: 'getAbout',
-          description: 'Retrieve about me section',
-        },
-        {
-          name: 'getContact',
-          description: 'Retrieve contact information',
-        },
-        {
-          name: 'getVolunteering',
-          description: 'Retrieve volunteering experience',
+          description:
+            "Retrieve details about how Anil's portfolio website was created and its technologies. Explain it like Anil's giving a behind-the-scenes tour.",
         },
       ],
     };
