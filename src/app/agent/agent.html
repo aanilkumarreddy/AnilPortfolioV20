@@ -1,0 +1,54 @@
+<button
+  matFab
+  class="fixed bottom-4 right-4 z-50"
+  (click)="toggleChat()"
+  aria-label="Open chat"
+>
+  <mat-icon>chat</mat-icon>
+</button>
+
+<!-- Chat Interface Card -->
+
+@if(isChatOpen){
+
+<div @fadeInOut class="fixed bottom-16 right-4 w-80 md:w-96 z-50">
+  <mat-card appearance="raised" class="px-4 py-2">
+    <!-- Close Button -->
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-lg font-semibold">Portfolio Assistant</h2>
+      <button mat-icon-button (click)="toggleChat()" aria-label="Close chat">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+
+    <!-- Chat History -->
+    <div #chatHistory class="chat-history h-64 overflow-y-auto mb-4 space-y-2">
+      @for (message of messages(); track message) {
+      <div [class]="message.role === 'user' ? 'text-right' : 'text-left'">
+        <span
+          [class]="message.role === 'user' ? 'bg-blue-800 text-white' : 'bg-gray-800 text-white'"
+          class="inline-block p-2 mr-2 rounded-lg"
+        >
+          {{ message.content }}
+        </span>
+      </div>
+      }
+    </div>
+
+    <mat-form-field class="w-full">
+      <textarea
+        cdkTextareaAutosize
+        matInput
+        [formControl]="userInput"
+        (keyup.enter)="sendMessage()"
+        placeholder="Type your message..."
+        [rows]="1"
+        [cdkAutosizeMaxRows]="2"
+      ></textarea>
+      <button matSuffix matIconButton (click)="sendMessage()">
+        <mat-icon>send</mat-icon>
+      </button>
+    </mat-form-field>
+  </mat-card>
+</div>
+}
