@@ -4,9 +4,11 @@ import {
   collection,
   collectionData,
   CollectionReference,
+  doc,
   Firestore,
   getDoc,
   getDocs,
+  updateDoc,
 } from '@angular/fire/firestore';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map, Observable } from 'rxjs';
@@ -57,7 +59,9 @@ export class DataService {
 
   getData(collectionPath: string): Observable<any> {
     // collectionData returns a hot observable
-    return collectionData(collection(this.firestore, collectionPath));
+    return collectionData(collection(this.firestore, collectionPath), {
+      idField: 'id',
+    });
     // .pipe(
     //   // map((response: any) => {
     //   //   console.log('Response from collectionData:', response);
@@ -79,10 +83,20 @@ export class DataService {
   //   this.getGeneralData();
   // }
 
-  // async addEducationData(): Promise<void> {
-  //   const educationCollection = collection(this.firestore, 'geoLoacation');
-  //   await addDoc(educationCollection, users);
-  // }
+  async addDataToFireDatabase(path: string, data: any): Promise<void> {
+    const dataCollection = collection(this.firestore, path);
+    await addDoc(dataCollection, data);
+  }
+
+  async updateDataInFireDatabase(
+    path: string,
+    id: string,
+    data: any
+  ): Promise<void> {
+    const dataCollection = collection(this.firestore, path);
+    const docRef = doc(dataCollection, id);
+    await updateDoc(docRef, data);
+  }
 
   // async addObjectsToCollection(): Promise<void> {
   //   console.log(`Adding ${projects.length} projects to Firestore.`);
@@ -154,4 +168,27 @@ export class DataService {
 //   accuracy: 14.003000259399414,
 //   latitude: 17.5188563,
 //   longitude: 78.3863889,
+// };
+
+// const about = {
+//   technologiesUsed: [
+//     'Angular',
+//     'Angular Material',
+//     'HTML5',
+//     'CSS 3',
+//     'SCSS',
+//     'TypeScript',
+//     'JavaScript',
+//   ],
+//   additionalTechnologies: [
+//     'Firebase',
+//     'Vertex AI',
+//     'Agents',
+//     'Airtificial Intelligence',
+//     'Roboto Font',
+//   ],
+//   title: 'About this page',
+//   subtitle: 'AngularCV: a simple self-hosted online-CV',
+//   description:
+//     'This online portfolio, hosted on Firebase, showcases my web development skills with an interactive and professional design. It features an AI assistant powered by Vertex AI and Artificial Intelligence, highlighting my expertise in modern web development and AI integration. The design, enhanced by Roboto Font, ensures an engaging user experience. This portfolio stands out as a strong example of my capabilities for recruiters.',
 // };

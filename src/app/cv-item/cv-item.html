@@ -27,7 +27,7 @@
   </mat-card-header>
   <mat-card-content>
     @if(cvItem()?.description ){
-    <p>{{cvItem().description}}</p>
+    <p class="p-2 text-justify">{{cvItem().description}}</p>
     } @if (cvItem()?.tags && cvItem().tags.length > 0) {
     <mat-chip-listbox>
       @for (tag of cvItem().tags; track tag) {

@@ -2,15 +2,8 @@ mat-toolbar.header {
   position: sticky;
   margin-top: 0;
 
-  /* to be synced with body<->header<->footer style */
   min-width: 250px;
-  /*width: 800px;*/
-  max-width: 800px;
-
-  /*  min-height: 64px;
-    height: 64px;
-    max-height: 64px;*/
-
+  max-width: 900px;
   top: 0;
   padding-left: 24px;
   font-size: 1em;
@@ -25,14 +18,16 @@ nav a.mat-tab-link {
 }
 nav mat-icon {
   position: absolute;
-  margin-top: -0.1em;
-  margin-left: -0.1em;
+  top: 50%; /* Center vertically */
+  left: 50%;
   font-size: 2em;
+  transform: translate(-50%, -50%); /* Adjust for icon’s dimensions */
   visibility: hidden;
+  height: 26px;
+  width: 26px;
 }
 nav a:hover mat-icon,
-  nav a:active mat-icon
-    /*nav a[ng-reflect-active="true"] mat-icon */ {
+nav a:active mat-icon {
   visibility: visible;
 }
 nav a:hover span,

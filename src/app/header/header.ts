@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { UpperCasePipe } from '@angular/common';
 import { RouterModule } from '@angular/router';
-
+import { MatMenuModule } from '@angular/material/menu';
 @Component({
   selector: 'app-header',
   imports: [
@@ -15,6 +15,7 @@ import { RouterModule } from '@angular/router';
     MatTabsModule,
     UpperCasePipe,
     RouterModule,
+    MatMenuModule,
   ],
   templateUrl: './header.html',
   styleUrl: './header.scss',
@@ -29,6 +30,15 @@ export class Header {
     { location: '/contact', label: 'Contact', icon: 'email' },
     { location: '/about', label: 'About', icon: 'info' },
   ];
-  links = ['First', 'Second', 'Third'];
-  activeLink = this.links[0];
+
+  windowWidth = window.innerWidth;
+
+  ngAfterViewInit() {
+    this.windowWidth = window.innerWidth;
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event) {
+    this.windowWidth = (event.target as Window).innerWidth;
+  }
 }

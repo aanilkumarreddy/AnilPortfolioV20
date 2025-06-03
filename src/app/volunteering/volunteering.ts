@@ -20,7 +20,6 @@ export class Volunteering {
       .getData('volunteering')
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((data) => {
-        console.log('Volunteering Data:', data);
         this.volunteeringDetails.set(data);
       });
   }

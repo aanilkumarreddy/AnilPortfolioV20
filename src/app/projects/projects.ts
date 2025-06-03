@@ -20,7 +20,6 @@ export class Projects {
       .getData('projects')
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((data) => {
-        console.log('Projects Data:', data);
         this.projectsDetails.set(data);
       });
   }

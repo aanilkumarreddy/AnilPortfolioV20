@@ -31,7 +31,6 @@ export class Education {
       .getData('education')
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((data) => {
-        console.log('Education Data:', data);
         this.educationDetails.set(data[0]);
       });
   }

@@ -19,31 +19,7 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class CvItem {
   cvItem = input.required<any>();
-  // cvItem = {
-  //   begin: '07-01-2020',
-  //   end: '07-31-2021',
-  //   link: 'https://www.mindtree.com',
-  //   subtitle: 'Senior Software Engineer',
-  //   description:
-  //     'Worked as a Senior Software Engineer in the Digital Transformation team at Mindtree. Developed and maintained web applications using Angular, React, and Material-UI. Worked on Electron.JS applications for desktop environments. Collaborated with cross-functional teams to deliver high-quality software solutions.',
-  //   company: 'Mindtree',
-  //   companyLink: 'https://www.mindtree.com',
-  //   tags: [
-  //     'Angular',
-  //     'React',
-  //     'Material-UI',
-  //     'Electron.JS',
-  //     'Java',
-  //     'Spring Boot',
-  //     'HTML5',
-  //     'CSS 3',
-  //     'SCSS',
-  //     'Firebase',
-  //   ],
-  //   thumbnail: 'mindtree.jpg',
-  //   title: 'Mindtree',
-  //   attachment: '',
-  // };
+
   isExpanded: boolean = false;
 
   toggleDetails(event: any) {

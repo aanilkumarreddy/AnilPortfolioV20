@@ -123,6 +123,10 @@ mat-card.closed .toggle-details mat-icon:before {
 @media screen and (max-width: 400px) {
   .timespan {
     padding-left: 8px;
+    padding-top: 12px;
+  }
+  .mat-mdc-card-header {
+    padding-top: 0px;
   }
 }
 
@@ -133,4 +137,10 @@ a[mat-button] {
 .mat-mdc-icon-button {
   padding: 4px;
   padding-right: 10px;
+}
+
+@media screen and (min-width: 601px) {
+  mat-card-header {
+    padding-right: 10em; /* Adjust this value based on your timespan width */
+  }
 }

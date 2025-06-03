@@ -23,7 +23,6 @@ export class Contact {
       .getData('contact')
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((data) => {
-        console.log('Contact Data:', data);
         this.contactDetails.set(data[0]);
       });
   }

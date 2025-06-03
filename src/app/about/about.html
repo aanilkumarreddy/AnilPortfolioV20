@@ -1,38 +1,33 @@
 <app-page-title [title]="'ABOUT'" [icon]="'info'"></app-page-title>
 
-<mat-card class="text-card">
+<mat-card class="text-card pt-3">
   <img
     src="images/AngularCV.png"
     width="150px"
     alt="AngularCV Logo"
     class="absolute top-4 right-4 object-cover"
   />
-  <mat-card-title>About this page</mat-card-title>
-  <mat-card-subtitle
-    >AngularCV: a simple self-hosted online-CV</mat-card-subtitle
+  <mat-card-title class="pl-4">{{aboutDetails()?.title}}</mat-card-title>
+  <mat-card-subtitle class="pl-4"
+    >{{aboutDetails()?.subtitle}}</mat-card-subtitle
   >
-  <mat-card-content>
-    <p>
-      This website was created as a GitHub project for the purpose of having a
-      basic online-CV, which anyone can host by themselves. The main target
-      audience are software developers though. To build this, basically the
-      following technologies are used:
+  <mat-card-content class="mt-2">
+    <p class="pb-2">
+      {{aboutDetails()?.description}} To build this, basically the following
+      technologies are used:
     </p>
     <mat-chip-set>
-      <mat-chip>Angular</mat-chip>
-      <mat-chip>Material Design</mat-chip>
-      <mat-chip>GitHub</mat-chip>
-      <mat-chip>TypeScript</mat-chip>
-      <mat-chip>Firebase</mat-chip>
-      <mat-chip>CSS</mat-chip>
-      <mat-chip>HTML5</mat-chip>
+      @for(tech of aboutDetails()?.technologiesUsed; track tech){
+      <mat-chip>{{tech}}</mat-chip>
+      }
     </mat-chip-set>
-    <p>Additionally, the following third party sources are included:</p>
+    <p class="pt-2">
+      Additionally, the following third party sources are included:
+    </p>
     <mat-chip-set>
-      <mat-chip>IcoMoon icon font</mat-chip>
-      <mat-chip>Roboto font</mat-chip>
-      <mat-chip>Roboto Slab font</mat-chip>
-      <mat-chip>jsPDF</mat-chip>
+      @for(tech of aboutDetails()?.additionalTechnologies; track tech){
+      <mat-chip>{{tech}}</mat-chip>
+      }
     </mat-chip-set>
   </mat-card-content>
   <mat-card-actions>

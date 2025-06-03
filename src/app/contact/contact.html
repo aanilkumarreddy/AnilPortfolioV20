@@ -16,10 +16,7 @@
       <mat-list-item>
         <mat-icon matListItemIcon>email</mat-icon>
         <div matListItemTitle>
-          <a
-            mat-button
-            color="default"
-            href="mailto:{{ contactDetails().mail }}"
+          <a matButton href="mailto:{{ contactDetails().mail }}"
             >{{ contactDetails().mail }}</a
           >
         </div>
@@ -28,7 +25,7 @@
       <mat-list-item>
         <mat-icon matListItemIcon>phone</mat-icon>
         <div matListItemTitle>
-          <a mat-button color="default" href="tel:{{ contactDetails().phone }}"
+          <a matButton href="tel:{{ contactDetails().phone }}"
             >{{ contactDetails().phone }}</a
           >
         </div>
@@ -43,76 +40,57 @@
   <mat-card-content>
     <mat-list>
       @if(contactDetails()?.linkedin){
-      <mat-list-item>
-        <!-- <div matListItemTitle>{{folder.name}}</div>
-        <div matListItemLine>{{folder.updated | date}}</div> -->
+      <mat-list-item lines="2.5">
         <mat-icon matListItemIcon>linkedin</mat-icon>
         <div matListItemTitle>LinkedIn</div>
         <div matListItemLine>
-          <a
-            mat-button
-            color="primary"
-            href="{{ contactDetails().linkedin }}"
-            target="_blank"
-            >{{ contactDetails().linkedin }}</a
+          <a matButton href="{{ contactDetails().linkedin }}" target="_blank"
+            ><mat-icon>link</mat-icon>OPEN PROFILE</a
           >
         </div>
       </mat-list-item>
       } @if(contactDetails()?.github){
-      <mat-list-item>
+      <mat-list-item lines="2.5">
         <mat-icon matListItemIcon>github</mat-icon>
         <div matListItemTitle>GitHub</div>
 
         <div matListItemLine>
-          <a
-            mat-button
-            color="primary"
-            href="{{ contactDetails().github }}"
-            target="_blank"
-            >{{ contactDetails().github }}</a
+          <a matButton href="{{ contactDetails().github }}" target="_blank"
+            ><mat-icon>link</mat-icon>OPEN PROFILE</a
           >
         </div>
       </mat-list-item>
       } @if(contactDetails()?.stackoverflow){
-      <mat-list-item>
+      <mat-list-item lines="2.5">
         <mat-icon matListItemIcon>stackoverflow</mat-icon>
         <div matListItemTitle>Stack Overflow</div>
 
         <div matListItemLine>
           <a
-            mat-button
-            color="primary"
+            matButton
             href="{{ contactDetails().stackoverflow }}"
             target="_blank"
-            >{{ contactDetails().stackoverflow }}</a
+            ><mat-icon>link</mat-icon>OPEN PROFILE</a
           >
         </div>
       </mat-list-item>
       } @if(contactDetails()?.facebook){
-      <mat-list-item>
+      <mat-list-item lines="2.5">
         <mat-icon matListItemIcon>facebook</mat-icon>
         <div matListItemTitle>Facebook</div>
         <div matListItemLine>
-          <a
-            mat-button
-            color="primary"
-            href="{{ contactDetails().facebook }}"
-            target="_blank"
-            >{{ contactDetails().facebook }}</a
+          <a matButton href="{{ contactDetails().facebook }}" target="_blank"
+            ><mat-icon>link</mat-icon>OPEN PROFILE</a
           >
         </div>
       </mat-list-item>
       } @if(contactDetails()?.twitter){
-      <mat-list-item>
+      <mat-list-item lines="2.5">
         <mat-icon matListItemIcon>twitter</mat-icon>
         <div matListItemTitle>Twitter</div>
         <div matListItemLine>
-          <a
-            mat-button
-            color="primary"
-            href="{{ contactDetails().twitter }}"
-            target="_blank"
-            >{{ contactDetails().twitter }}</a
+          <a matButton href="{{ contactDetails().twitter }}" target="_blank"
+            ><mat-icon>link</mat-icon>OPEN PROFILE</a
           >
         </div>
       </mat-list-item>

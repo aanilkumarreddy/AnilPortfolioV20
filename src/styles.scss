@@ -24,7 +24,7 @@ body {
 body {
   margin: 0 auto;
   min-width: 250px;
-  max-width: 800px;
+  max-width: 900px;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: var(--mat-sys-background);
   color: var(--mat-sys-on-background);
@@ -47,6 +47,7 @@ body {
   @include mat.tabs-overrides(
     (
       background-color: var(--mat-sys-on-background),
+      active-ripple-color: var(--mat-sys-primary-container),
     )
   );
 }
