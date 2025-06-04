@@ -13,6 +13,8 @@ import { MatIcon } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MarkdownModule } from 'ngx-markdown';
 
 @Component({
   selector: 'app-agent',
@@ -24,6 +26,8 @@ import { trigger, transition, style, animate } from '@angular/animations';
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
+    MatTooltipModule,
+    MarkdownModule,
   ],
   templateUrl: './agent.html',
   styleUrl: './agent.scss',
@@ -39,24 +43,11 @@ import { trigger, transition, style, animate } from '@angular/animations';
 })
 export class Agent implements AfterViewChecked {
   messages = signal<any[]>([
-    { role: 'ai', content: 'You are a helpful AI assistant.' },
-    { role: 'user', content: 'Hello! How can you assist me today?' },
+    { role: 'ai', content: "Hi, I'm Anil's Assistant." },
+    { role: 'ai', content: 'How can I help you today?' },
     {
       role: 'ai',
-      content:
-        'Hi there  ! I can help you with information about my portfolio, including education, work experience, projects, and more. What would you like to know?',
-    },
-    { role: 'user', content: 'Can you tell me about your education?' },
-    {
-      role: 'ai',
-      content:
-        'Sure! I have a degree in Computer Science from XYZ University, where I specialized in software development and AI.',
-    },
-    { role: 'user', content: 'What projects have you worked on?' },
-    {
-      role: 'ai',
-      content:
-        'I have worked on several projects, including a web application for task management, a mobile app for fitness tracking, and an AI-powered chatbot for customer support.',
+      content: "You can ask me about Anil's work, education, or anything else.",
     },
   ]);
   userInput = new FormControl('');
@@ -89,14 +80,18 @@ export class Agent implements AfterViewChecked {
     this.messages.update((messages) => [
       ...messages,
       { role: 'user', content: userMessage },
+      {
+        role: 'typing',
+        content: '',
+      },
     ]);
     this.userInput.patchValue('');
     this.scrollToBottom();
     const response = await this.agentService.processMessage(userMessage);
-    this.messages.update((messages) => [
-      ...messages,
-      { role: 'ai', content: response },
-    ]);
+    this.messages.update((messages) => {
+      const filteredMessages = messages.filter((m) => m.role !== 'typing');
+      return [...filteredMessages, { role: 'ai', content: response }];
+    });
 
     this.scrollToBottom();
   }

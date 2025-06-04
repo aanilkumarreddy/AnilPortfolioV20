@@ -1,8 +1,9 @@
 <button
   matFab
-  class="fixed bottom-4 right-4 z-50"
+  class="fixed bottom-10 right-10 z-50"
   (click)="toggleChat()"
   aria-label="Open chat"
+  [matTooltip]="'Chat with Anil\'s Assistant'"
 >
   <mat-icon>chat</mat-icon>
 </button>
@@ -23,16 +24,28 @@
 
     <!-- Chat History -->
     <div #chatHistory class="chat-history h-64 overflow-y-auto mb-4 space-y-2">
-      @for (message of messages(); track message) {
+      @for (message of messages(); track message) { @if(message.role
+      ==='typing'){
+      <div class="text-left">
+        <div class="inline-block bg-gray-800 text-white">
+          <div class="pulse-loader flex items-center w-7 h-2">
+            <!--Loader for api response-->
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+      }@else {
       <div [class]="message.role === 'user' ? 'text-right' : 'text-left'">
         <span
           [class]="message.role === 'user' ? 'bg-blue-800 text-white' : 'bg-gray-800 text-white'"
           class="inline-block p-2 mr-2 rounded-lg"
         >
-          {{ message.content }}
+          <markdown [data]="message.content"></markdown>
         </span>
       </div>
-      }
+      } }
     </div>
 
     <mat-form-field class="w-full">
