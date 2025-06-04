@@ -139,7 +139,7 @@ export class AgentService {
               {
                 functionResponse: {
                   name: functionCall.name,
-                  response: { workExperience: experience[0] },
+                  response: { workExperience: experience },
                 },
               },
             ]);
@@ -150,7 +150,7 @@ export class AgentService {
               {
                 functionResponse: {
                   name: functionCall.name,
-                  response: { projects: projects[0] },
+                  response: { projects: projects },
                 },
               },
             ]);
@@ -183,7 +183,7 @@ export class AgentService {
               {
                 functionResponse: {
                   name: functionCall.name,
-                  response: { volunteering: volunteering[0] },
+                  response: { volunteering: volunteering },
                 },
               },
             ]);
