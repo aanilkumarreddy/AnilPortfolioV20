@@ -101,7 +101,7 @@ export class AgentService {
   };
 
   private overview = async () => {
-    return await firstValueFrom(this.dataService.getData('overview'));
+    return await firstValueFrom(this.dataService.getData('overrview'));
   };
 
   private contact = async () => {
