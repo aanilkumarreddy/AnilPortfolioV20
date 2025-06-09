@@ -120,87 +120,51 @@ export class AgentService {
     let result = await this.chat.sendMessage(message);
     const functionCalls = result.response.functionCalls();
     if (functionCalls && functionCalls.length > 0) {
+      const functionResponses = [];
       for (const functionCall of functionCalls) {
+        let responseData;
         switch (functionCall.name) {
           case 'getEducation':
             const education = await this.getEducationTool();
-            result = await this.chat.sendMessage([
-              {
-                functionResponse: {
-                  name: functionCall.name,
-                  response: { education: education[0] },
-                },
-              },
-            ]);
+            responseData = { education: education[0] };
             break;
           case 'getWorkExperience':
             const experience = await this.getWorkExperienceTool();
-            result = await this.chat.sendMessage([
-              {
-                functionResponse: {
-                  name: functionCall.name,
-                  response: { workExperience: experience },
-                },
-              },
-            ]);
+            responseData = { workExperience: experience };
             break;
           case 'getProjects':
             const projects = await this.getProjectsTool();
-            result = await this.chat.sendMessage([
-              {
-                functionResponse: {
-                  name: functionCall.name,
-                  response: { projects: projects },
-                },
-              },
-            ]);
+            responseData = { projects: projects };
             break;
           case 'getOverview':
             const overview = await this.overview();
-            result = await this.chat.sendMessage([
-              {
-                functionResponse: {
-                  name: functionCall.name,
-                  response: { overview: overview[0] },
-                },
-              },
-            ]);
+            responseData = { overview: overview[0] };
             break;
           case 'getContact':
             const contact = await this.contact();
-            result = await this.chat.sendMessage([
-              {
-                functionResponse: {
-                  name: functionCall.name,
-                  response: { contact: contact[0] },
-                },
-              },
-            ]);
+            responseData = { contact: contact[0] };
             break;
           case 'getVolunteering':
             const volunteering = await this.volunteering();
-            result = await this.chat.sendMessage([
-              {
-                functionResponse: {
-                  name: functionCall.name,
-                  response: { volunteering: volunteering },
-                },
-              },
-            ]);
+            responseData = { volunteering: volunteering };
             break;
           case 'getAbout':
             const about = await this.about();
-            result = await this.chat.sendMessage([
-              {
-                functionResponse: {
-                  name: functionCall.name,
-                  response: { about: about[0] },
-                },
-              },
-            ]);
+            responseData = { about: about[0] };
+            break;
+          default:
+            // Handle unknown function calls if necessary
+            responseData = { error: `Unknown function: ${functionCall.name}` };
             break;
         }
+        functionResponses.push({
+          functionResponse: {
+            name: functionCall.name,
+            response: responseData,
+          },
+        });
       }
+      result = await this.chat.sendMessage(functionResponses);
     }
     return result.response.text();
   }
