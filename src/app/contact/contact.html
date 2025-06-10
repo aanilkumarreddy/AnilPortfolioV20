@@ -39,7 +39,17 @@
   <mat-card-title>Other profiles on the web</mat-card-title>
   <mat-card-content>
     <mat-list>
-      @if(contactDetails()?.linkedin){
+      @if(contactDetails()?.bookACall){
+      <mat-list-item lines="2.5">
+        <mat-icon matListItemIcon>event</mat-icon>
+        <div matListItemTitle>Book a Call</div>
+        <div matListItemLine>
+          <a matButton href="{{ contactDetails().bookACall }}" target="_blank"
+            ><mat-icon>link</mat-icon>BOOK CALL</a
+          >
+        </div>
+      </mat-list-item>
+      } @if(contactDetails()?.linkedin){
       <mat-list-item lines="2.5">
         <mat-icon matListItemIcon>linkedin</mat-icon>
         <div matListItemTitle>LinkedIn</div>
