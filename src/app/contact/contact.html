@@ -3,7 +3,7 @@
   [icon]="'email'"
 ></app-page-title>
 
-<mat-card class="text-card">
+<mat-card class="text-card pt-3 pl-4">
   <mat-card-title>General</mat-card-title>
   <mat-card-content>
     <mat-list>
@@ -35,7 +35,7 @@
   </mat-card-content>
 </mat-card>
 
-<mat-card class="text-card">
+<mat-card class="text-card pt-3 pl-4">
   <mat-card-title>Other profiles on the web</mat-card-title>
   <mat-card-content>
     <mat-list>
@@ -51,7 +51,7 @@
       </mat-list-item>
       } @if(contactDetails()?.linkedin){
       <mat-list-item lines="2.5">
-        <mat-icon matListItemIcon>linkedin</mat-icon>
+        <mat-icon matListItemIcon>group</mat-icon>
         <div matListItemTitle>LinkedIn</div>
         <div matListItemLine>
           <a matButton href="{{ contactDetails().linkedin }}" target="_blank"
@@ -61,7 +61,7 @@
       </mat-list-item>
       } @if(contactDetails()?.github){
       <mat-list-item lines="2.5">
-        <mat-icon matListItemIcon>github</mat-icon>
+        <mat-icon matListItemIcon>commit</mat-icon>
         <div matListItemTitle>GitHub</div>
 
         <div matListItemLine>
@@ -72,7 +72,7 @@
       </mat-list-item>
       } @if(contactDetails()?.stackoverflow){
       <mat-list-item lines="2.5">
-        <mat-icon matListItemIcon>stackoverflow</mat-icon>
+        <mat-icon matListItemIcon>forum</mat-icon>
         <div matListItemTitle>Stack Overflow</div>
 
         <div matListItemLine>
@@ -96,8 +96,8 @@
       </mat-list-item>
       } @if(contactDetails()?.twitter){
       <mat-list-item lines="2.5">
-        <mat-icon matListItemIcon>twitter</mat-icon>
-        <div matListItemTitle>Twitter</div>
+        <mat-icon matListItemIcon>alternate_email</mat-icon>
+        <div matListItemTitle>X(Twitter)</div>
         <div matListItemLine>
           <a matButton href="{{ contactDetails().twitter }}" target="_blank"
             ><mat-icon>link</mat-icon>OPEN PROFILE</a
