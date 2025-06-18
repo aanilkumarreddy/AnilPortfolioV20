@@ -58,9 +58,18 @@
         [rows]="1"
         [cdkAutosizeMaxRows]="2"
       ></textarea>
+      @if(!isListening && !userInput.value){
+      <button matSuffix matIconButton (click)="startSpeech()">
+        <mat-icon>mic</mat-icon></button
+      >} @if(isListening){
+      <button matSuffix matIconButton (click)="stopSpeech()">
+        <mat-icon>stop_circle</mat-icon>
+      </button>
+      } @if(userInput.value?.trim()){
       <button matSuffix matIconButton (click)="sendMessage()">
         <mat-icon>send</mat-icon>
       </button>
+      }
     </mat-form-field>
   </mat-card>
 </div>
