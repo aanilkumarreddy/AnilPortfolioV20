@@ -84,6 +84,9 @@ export class Agent implements AfterViewChecked {
 
   async sendMessage() {
     const userMessage = this.userInput.value ?? '';
+    if (!userMessage || userMessage.trim() === '') {
+      return;
+    }
     // this.messages.push(`You: ${userMessage}`);
     this.messages.update((messages) => [
       ...messages,

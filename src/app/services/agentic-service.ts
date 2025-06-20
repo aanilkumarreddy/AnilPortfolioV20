@@ -1,28 +1,19 @@
 import { inject, Injectable } from '@angular/core';
 import { DataService } from './data';
-// Placeholder for Firebase AI Logic import (update with actual SDK)
 import { FirebaseApp } from '@angular/fire/app';
-import {
-  getVertexAI,
-  getGenerativeModel,
-  GenerativeModel,
-  ChatSession,
-  FunctionDeclarationsTool,
-  ObjectSchemaInterface,
-  Schema,
-  getAI,
-} from '@angular/fire/vertexai';
+import { GenerativeModel, ChatSession } from '@angular/fire/vertexai';
 import { firstValueFrom } from 'rxjs';
+import { VertexAIWrapperService } from './vertexai-wrapper.service';
+
 @Injectable({ providedIn: 'root' })
 export class AgentService {
-  // private agent: FunctionDeclarationsTool; // Replace with actual Firebase AI Logic agent type
   private readonly model: GenerativeModel;
   private readonly chat: ChatSession;
 
   private dataService = inject(DataService);
   private firebaseApp = inject(FirebaseApp);
 
-  constructor() {
+  constructor(private vertexAIWrapper: VertexAIWrapperService) {
     // Initialize agent with system instructions and tools
     const portfolioToolSet = {
       functionDeclarations: [
@@ -64,28 +55,15 @@ export class AgentService {
       ],
     };
 
-    const vertexAI = getAI(this.firebaseApp);
+    const vertexAI = this.vertexAIWrapper.getAI(this.firebaseApp);
     const systemInstructions =
       "Hi there! I'm Anil's virtual assistant, here to help you learn more about Anil's education, work experience, and projects. I use the tools provided to fetch the most up-to-date information. When answering questions, I aim to reflect Anil's friendly, professional, and humorous tone. I strive to make my responses clear, concise, and engaging, just like Anil would, using Markdown for formatting (e.g., **bold**, *italics*, - for lists). Ask me anything about Anil, and I'll do my best to answer in a way that feels like Anil himself!";
-    this.model = getGenerativeModel(vertexAI, {
+    this.model = this.vertexAIWrapper.getGenerativeModel(vertexAI, {
       model: 'gemini-1.5-pro',
       systemInstruction: systemInstructions,
       tools: [portfolioToolSet],
     });
     this.chat = this.model.startChat();
-    //   systemInstructions:
-    //     'You are a helpful assistant for my portfolio website. Answer questions about my education, work experience, and projects using the provided tools.',
-    //   tools: {
-    //     getEducation: this.getEducationTool,
-    //     getWorkExperience: this.getWorkExperienceTool,
-    //     getProjects: this.getProjectsTool,
-    //     getOverview: this.overview,
-    //     getContact: this.contact,
-    //     getVolunteering: this.volunteering,
-    //     getAbout: this.about,
-    //   },
-    // };
-    // Replace with actual Firebase AI Logic initialization
   }
 
   private getEducationTool = async () => {
