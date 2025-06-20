@@ -11,7 +11,7 @@ A personal portfolio web application built with Angular 20. This project showcas
 
 ## Demo
 
-You can view a live demo (if deployed) at: [https://anil-portfolio.firebaseapp.com]
+You can view a live demo at: [Anil Portfolio](https://anil-portfolio.firebaseapp.com)
 
 ## Installation
 
