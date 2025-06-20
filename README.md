@@ -1,59 +1,69 @@
-# AnilPortfolio
+# Anil Portfolio
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.0.
+A personal portfolio web application built with Angular 20. This project showcases my professional experience, education, projects, volunteering, and contact information in a modern, responsive design.
 
-## Development server
+## Features
 
-To start a local development server, run:
+- Responsive single-page application
+- Sections for About, Experience, Education, Projects, Volunteering, and Contact
+- Integration with Firebase for hosting and backend
+- Progressive Web App (PWA) support
 
-```bash
-ng serve
-```
+## Demo
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+You can view a live demo (if deployed) at: [https://anil-portfolio.firebaseapp.com]
 
-## Code scaffolding
+## Installation
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/aanilkumarreddy/AnilPortfolioV20.git
+   cd AnilPortfolio
+   ```
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-```bash
-ng generate component component-name
-```
+## Usage
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- **Development server:**
 
-```bash
-ng generate --help
-```
+  ```bash
+  npm start
+  ```
 
-## Building
+  Navigate to `http://localhost:4200/` in your browser.
 
-To build the project run:
+- **Build for production:**
 
-```bash
-ng build
-```
+  ```bash
+  ng build --prod
+  ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+- **Run unit tests:**
+  ```bash
+  npm test
+  ```
 
-## Running unit tests
+## Folder Structure
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+- `src/app/` - Main application source code
+- `public/` - Static assets (images, icons, attachments)
+- `coverage/` - Test coverage reports
 
-```bash
-ng test
-```
+## Technologies Used
 
-## Running end-to-end tests
+- Angular 20
+- TypeScript
+- SCSS
+- Firebase
+- PWA (Progressive Web App)
 
-For end-to-end (e2e) testing, run:
+## License
 
-```bash
-ng e2e
-```
+This project is licensed under the MIT License.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+---
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+_Generated with [Angular CLI](https://github.com/angular/angular-cli)._
