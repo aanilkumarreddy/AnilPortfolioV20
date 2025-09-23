@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -6,6 +6,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { UpperCasePipe } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatMenuModule } from '@angular/material/menu';
+import { fromEvent, startWith } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 @Component({
   selector: 'app-header',
   imports: [
@@ -20,7 +22,9 @@ import { MatMenuModule } from '@angular/material/menu';
   templateUrl: './header.html',
   styleUrl: './header.scss',
 })
-export class Header {
+export class Header implements OnInit {
+  private destroyRef = inject(DestroyRef);
+
   navLinks = [
     { location: '/overview', label: 'Overview', icon: 'account_circle' },
     { location: '/experience', label: 'Experience', icon: 'work' },
@@ -33,12 +37,13 @@ export class Header {
 
   windowWidth = window.innerWidth;
 
-  ngAfterViewInit() {
+  ngOnInit() {
     this.windowWidth = window.innerWidth;
-  }
 
-  @HostListener('window:resize', ['$event'])
-  onResize(event: Event) {
-    this.windowWidth = (event.target as Window).innerWidth;
+    fromEvent(window, 'resize')
+      .pipe(startWith(null), takeUntilDestroyed(this.destroyRef))
+      .subscribe(() => {
+        this.windowWidth = window.innerWidth;
+      });
   }
 }
