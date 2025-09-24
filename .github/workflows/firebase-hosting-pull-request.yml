@@ -37,7 +37,9 @@ jobs:
           };
           EOF
       - name: Build Angular app
-        run: npx ng build
+        env:
+          LIGHTNING_CSS_DISABLE_RUNTIME: "1"
+        run: npx ng build --configuration production
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
