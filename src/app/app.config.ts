@@ -5,14 +5,14 @@ import {
   isDevMode,
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
-import { firebaseConfig } from './firebase.config';
+import { environment } from '../environments/environment';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { routes } from './app.routes';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideMarkdown } from 'ngx-markdown';
 import { provideServiceWorker } from '@angular/service-worker';
-const firebaseConfigData = firebaseConfig;
+const firebaseConfigData = environment.firebase;
 
 export const appConfig: ApplicationConfig = {
   providers: [
